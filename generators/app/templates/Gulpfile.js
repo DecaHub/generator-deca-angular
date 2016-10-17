@@ -9,7 +9,7 @@ const concat = require('gulp-concat');
 const eslint = require('gulp-eslint');
 const less = require('gulp-less');
 const path = require('path');
-const util = require('gulp-util');
+const gutil = require('gulp-util');
 
 gulp.task('less', () => {
 	return gulp.src('app/**/*.less')
@@ -58,7 +58,7 @@ gulp.task('inject', () => {
 	// });
 	
 	let injectSrc = gulp.src([
-		'app/dist/src/**/*.css',
+		'app/dist/styles/**/*.css',
 		'app/dist/src/app.js',
 		'app/dist/src/**/*module.js',
 		'app/dist/src/**/*constants.js',

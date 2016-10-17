@@ -23,8 +23,6 @@ module.exports = yeoman.generators.Base.extend({
 			}
 			], function(answers) {
 			this.props = answers;
-			// this.log(answers.name);
-			// this.log(answers.author);
 			done();
 		}.bind(this));
 	},
@@ -46,6 +44,14 @@ module.exports = yeoman.generators.Base.extend({
 					author: this.props.author,
 				}
 			);
+			this.fs.copyTpl(
+				this.templatePath('README.md'),
+				this.destinationPath('README.md'), {
+					name: this.props.name,
+					author: this.props.author,
+				}
+			);
+			
 			
 			// Configuration Files
 			this.fs.copy(

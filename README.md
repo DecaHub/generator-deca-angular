@@ -16,3 +16,8 @@ If using Yarn:
 * yarn
 * yarn link
 * yo deca-angular
+
+After the scaffolding has finished:
+
+If npm: `npm start`
+If yarn: `yarn start`
