@@ -11,6 +11,14 @@ const less = require('gulp-less');
 const path = require('path');
 const util = require('gulp-util');
 
+gulp.task('less', () => {
+	return gulp.src('app/**/*.less')
+		.pipe(less())
+		.pipe(gulp.dest('app/dist/styles', {
+			overwrite: "true"
+		}));
+});
+
 gulp.task('lint', () => {
 	return gulp.src(['!app/lib', '!app/lib/**',
 		'!app/dist', '!app/dist/**', 'app/**/*.js'])
@@ -44,7 +52,11 @@ gulp.task('inject', () => {
 		addRootSlash: false
 	};
 	
-	let injectSrc = gulp.src(['!app/lib/', '!app/lib/**', 'app/**/*.css', 'app/**/**.js'], {
+	// let injectSrc = gulp.src(['!app/lib/', '!app/lib/**', 'app/**/*.css', 'app/**/**.js'], {
+	// 	read: false,
+	// });
+	
+	let injectSrc = gulp.src(['app/dist/**/*.css', 'app/dist/**/**.js'], {
 		read: false,
 	});
 	
