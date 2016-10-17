@@ -58,24 +58,24 @@ gulp.task('inject', () => {
 	// });
 	
 	let injectSrc = gulp.src([
-		'app/dist/**/*.css',
-		'app/dist/app.js',
-		'app/dist/**/*module.js',
-		'app/dist/**/*constants.js',
-		'app/dist/**/*provider.js',
-		'app/dist/**/*enum.js',
-		'app/dist/**/*model.js',
-		'app/dist/**/*config.js',
-		'app/dist/**/*filter.js',
-		'app/dist/**/*directive.js',
-		'app/dist/**/*decorator.js',
-		'app/dist/**/*interceptor.js',
-		'app/dist/**/*service.js',
-		'app/dist/**/*workflow.js',
-		'app/dist/**/*repository.js',
-		'app/dist/**/*resolver.js',
-		'app/dist/**/*controller.js',
-		'app/dist/**/**.js'], {
+		'app/dist/src/**/*.css',
+		'app/dist/src/app.js',
+		'app/dist/src/**/*module.js',
+		'app/dist/src/**/*constants.js',
+		'app/dist/src/**/*provider.js',
+		'app/dist/src/**/*enum.js',
+		'app/dist/src/**/*model.js',
+		'app/dist/src/**/*config.js',
+		'app/dist/src/**/*filter.js',
+		'app/dist/src/**/*directive.js',
+		'app/dist/src/**/*decorator.js',
+		'app/dist/src/**/*interceptor.js',
+		'app/dist/src/**/*service.js',
+		'app/dist/src/**/*workflow.js',
+		'app/dist/src/**/*repository.js',
+		'app/dist/src/**/*resolver.js',
+		'app/dist/src/**/*controller.js',
+		'app/dist/src/**/**.js'], {
 		read: false,
 	});
 	
