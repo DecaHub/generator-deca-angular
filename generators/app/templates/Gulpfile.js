@@ -7,16 +7,14 @@ const sourcemaps = require('gulp-sourcemaps');
 const babel = require('gulp-babel');
 const concat = require('gulp-concat');
 const eslint = require('gulp-eslint');
-const less = require('gulp-less');
-const path = require('path');
 const gutil = require('gulp-util');
+var sass = require('gulp-sass');
 
-gulp.task('less', () => {
-	return gulp.src('app/**/*.less')
-		.pipe(less())
-		.pipe(gulp.dest('app/dist/styles', {
-			overwrite: "true"
-		}));
+gulp.task('sass', function() {
+	return gulp.src("app/**/*.scss")
+		.pipe(sass())
+		.pipe(gulp.dest("app/dist/styles"))
+		.pipe(browserSync.stream());
 });
 
 gulp.task('lint', () => {
@@ -89,11 +87,8 @@ gulp.task('js-watch', ['lint', 'transpile', 'inject'], () => {
 	browserSync.reload();
 });
 
-gulp.task('less-watch', ['less', 'inject'], () => {
-	browserSync.reload();
-});
-
 gulp.task('html-watch', ['inject'], () => {
+	gutil.log("task html-watch");
 	browserSync.reload();
 });
 
@@ -105,10 +100,9 @@ gulp.task('serve', () => {
 	});
 	
 	gulp.watch(['!app/lib', 'app/**/*.js'], ['js-watch']);
-	gulp.watch(['!app/lib', 'app/**/*.less'], ['less-watch']);
+	gulp.watch(['!app/lib', 'app/**/*.scss'], ['sass']);
 	gulp.watch(['!app/lib', 'app/**/*.html'], ['html-watch']);
 	
 });
 
-gulp.task('default', ['less', 'lint', 'transpile', 'inject', 'serve']);
-
+gulp.task('default', ['sass', 'lint', 'transpile', 'inject', 'serve']);
