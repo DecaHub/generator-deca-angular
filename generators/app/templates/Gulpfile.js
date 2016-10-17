@@ -8,7 +8,7 @@ const babel = require('gulp-babel');
 const concat = require('gulp-concat');
 const eslint = require('gulp-eslint');
 const gutil = require('gulp-util');
-var sass = require('gulp-sass');
+const sass = require('gulp-sass');
 
 gulp.task('sass', function() {
 	return gulp.src("app/**/*.scss")

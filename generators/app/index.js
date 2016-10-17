@@ -14,7 +14,7 @@ module.exports = yeoman.generators.Base.extend({
 				name: 'name',
 				message: 'Your project name: ',
 				//Defaults to the project's folder name if the input is skipped
-				default: this.appname
+				default: this.appname.replace(/\s+/g, '-')
 			},
 			{
 				type: 'input',
