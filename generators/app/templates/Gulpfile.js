@@ -21,20 +21,21 @@ gulp.task('less', () => {
 
 gulp.task('lint', () => {
 	return gulp.src(['!app/lib', '!app/lib/**',
-		'!app/dist', '!app/dist/**', 'app/**/*.js'])
+			'!app/dist', '!app/dist/**', 'app/**/*.js'])
 		.pipe(eslint())
 		.pipe(eslint.format())
 		.pipe(eslint.failAfterError());
 });
 
+// Uncomment concat pipe to unable universal concatenation
 gulp.task('transpile', () => {
 	return gulp.src(['!app/lib', '!app/lib/**',
 			'!app/dist', '!app/dist/**', 'app/**/*.js'])
 		.pipe(sourcemaps.init())
 		.pipe(babel())
-		.pipe(concat("compiled_source.js"))
+		// .pipe(concat("compiled_source.js"))
 		.pipe(sourcemaps.write("."))
-		.pipe(gulp.dest("app/dist", {
+		.pipe(gulp.dest("app/dist/src", {
 			overwrite: true
 		}))
 });
@@ -56,21 +57,39 @@ gulp.task('inject', () => {
 	// 	read: false,
 	// });
 	
-	let injectSrc = gulp.src(['app/dist/**/*.css', 'app/dist/**/**.js'], {
+	let injectSrc = gulp.src([
+		'app/dist/**/*.css',
+		'app/dist/app.js',
+		'app/dist/**/*module.js',
+		'app/dist/**/*constants.js',
+		'app/dist/**/*provider.js',
+		'app/dist/**/*enum.js',
+		'app/dist/**/*model.js',
+		'app/dist/**/*config.js',
+		'app/dist/**/*filter.js',
+		'app/dist/**/*directive.js',
+		'app/dist/**/*decorator.js',
+		'app/dist/**/*interceptor.js',
+		'app/dist/**/*service.js',
+		'app/dist/**/*workflow.js',
+		'app/dist/**/*repository.js',
+		'app/dist/**/*resolver.js',
+		'app/dist/**/*controller.js',
+		'app/dist/**/**.js'], {
 		read: false,
 	});
 	
 	return gulp.src('app/*.html').
-		pipe(wiredep(options)).
-		pipe(injector(injectSrc, injectOptions)).
-		pipe(gulp.dest('app'));
+	pipe(wiredep(options)).
+	pipe(injector(injectSrc, injectOptions)).
+	pipe(gulp.dest('app'));
 });
 
-gulp.task('js-watch', ['lint', 'inject'], () => {
+gulp.task('js-watch', ['lint', 'transpile', 'inject'], () => {
 	browserSync.reload();
 });
 
-gulp.task('css-watch', ['inject'], () => {
+gulp.task('less-watch', ['less', 'inject'], () => {
 	browserSync.reload();
 });
 
@@ -86,10 +105,10 @@ gulp.task('serve', () => {
 	});
 	
 	gulp.watch(['!app/lib', 'app/**/*.js'], ['js-watch']);
-	gulp.watch(['!app/lib', 'app/**/*.css'], ['css-watch']);
+	gulp.watch(['!app/lib', 'app/**/*.less'], ['less-watch']);
 	gulp.watch(['!app/lib', 'app/**/*.html'], ['html-watch']);
 	
 });
 
-gulp.task('default', ['lint', 'inject', 'serve']);
+gulp.task('default', ['less', 'lint', 'transpile', 'inject', 'serve']);
 

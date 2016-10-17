@@ -8,6 +8,9 @@
     "extends": "eslint:all",
     "parserOptions": {
     },
+    "globals": {
+        "angular": true
+    },
     "rules": {
         "indent": [
             "error",

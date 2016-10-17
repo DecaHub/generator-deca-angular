@@ -9,3 +9,10 @@ To try:
 * npm install
 * npm link
 * yo deca-angular
+
+If using Yarn:
+
+* Clone
+* yarn
+* yarn link
+* yo deca-angular
