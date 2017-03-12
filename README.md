@@ -1,35 +1,67 @@
 Yeoman `deca-angular` generator
 =======================
 
-This is a Yeoman custom generator demo.
+> Smart Yeoman generator for AngularJS - powered by Gulp 
 
-_package.json, _bower.json will be the files that will be copied to create the generator. 
-package.json, bower.json are to be used for testing as they do not have dynamic components (such as name and author).
+### Usage
 
-To try:
+Install `yo`, `gulp`, `bower`, `generator-deca-angular`:
 
-* Clone
-* npm install
-* npm link
-* yo deca-angular
+```
+npm install -g gulp bower yo generator-deca-angular
+```
 
-If using Yarn:
+or
 
-* Clone
-* yarn
-* yarn link
-* yo deca-angular
+```
+yarn global add gulp bower yo generator-deca-angular
+```
 
-After the scaffolding has finished:
+To use Sass, you will need to first install Ruby and Sass:
+- Install Ruby by downloading from [here](http://rubyinstaller.org/downloads/) or use Homebrew
+- Install the sass gem:
+```
+gem install sass
+```
 
-If npm: `npm start`
-If yarn: `yarn start`
+Make a new directory, and `cd` into it:
+```
+mkdir my-new-project && cd $_
+```
 
-## Usage
+Run `yo deca-angular`
+```
+yo deca-angular
+```
+
+If you have `yarn` installed:
+
+Note: This requires `yarn v0.16` or higher.
+
+`yarn start`
+
+If you prefer to use `npm`, please modify the `package.json` file `script` property:
+
+From:
+
+`"start": "yarn && bower install && gulp"`
+
+to:
+
+`"start": "npm install && bower install && gulp"`
+
+and then run:
+
+`npm start`
+
+`start` is a script that will install the node and bower packages as well as start the Gulp automatic build workflow. Gulp will be running continuously in the background until you decide to stop it (CTRL + C in the Mac). A browser tab/window will open to display the application. Every time that you make a change to a non-library, non-node-module .css, .html or .js file, the browser will reload and display the changes automatically.
+
+
+Use the prompts to enter the project and author name.
 
 ### Conventions
 
-For the project’s JavaScript files, please follow this naming convention as it helps the project sort out your AngularJS files and inject them automatically in the correct order:
+For the project’s JavaScript files, please follow this naming convention as it helps Gulp sort out your AngularJS files and inject them automatically in the correct order:
 
 ``` javascript
 /**
