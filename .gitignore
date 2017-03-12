@@ -9,6 +9,9 @@ generators/app/templates/app/lib/
 .AppleDouble
 .LSOverride
 
+yarn.lock
+yarn-error.log
+
 # Icon must end with two \r
 Icon
 
