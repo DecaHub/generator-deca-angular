@@ -4,7 +4,7 @@
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "",
+  "repository": "https://github.com/DecaHub/generator-deca-angular",
   "author": {
     "name": "DecaHub"
   },
