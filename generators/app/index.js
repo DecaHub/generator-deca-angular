@@ -2,6 +2,8 @@
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
+const path = require("path");
+const mkdirp = require('mkdirp');
 
 module.exports = yeoman.generators.Base.extend({
 	//Configurations will be loaded here.
@@ -90,6 +92,8 @@ module.exports = yeoman.generators.Base.extend({
 					name: this.props.name
 				}
 			);
+			
+			mkdirp.sync(path.join('app', 'dist'));
 		}
 	}
 });
