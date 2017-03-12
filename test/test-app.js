@@ -1,23 +1,42 @@
-'use strict';
+"use strict";
 
-var path = require('path');
-var assert = require('yeoman-generator').assert;
-var helpers = require('yeoman-generator').test;
-var os = require('os');
+/* global define describe, before, it */
 
-describe('scotchmean:app', function () {
-  before(function (done) {
-    helpers.run(path.join(__dirname, '../generators/app'))
-      .withOptions({ skipInstall: true })
-      .withPrompts({ someOption: true })
-      .on('end', done);
-  });
+const path = require("path");
+const assert = require("yeoman-generator").assert;
+const helpers = require("yeoman-generator").test;
+const os = require("os");
 
-  it('creates files', function () {
-    assert.file([
-      'bower.json',
-      'package.json',
-      '.jshintrc'
-    ]);
-  });
+describe("deca-angular:app", function () {
+	
+	before(function (done) {
+		
+		helpers.run(path.join(__dirname, "../generators/app"))
+			.withOptions({skipInstall: true})
+			.withPrompts({someOption: true})
+			.on("end", done);
+	
+	});
+
+	it("creates files", function () {
+		
+		assert.file([
+			".babelrc",
+			".bowerrc",
+			".gitignore",
+			"bower.json",
+			"package.json",
+			".eslintrc.json",
+			"Gulpfile.js",
+			"README.md",
+			"app",
+			"app/dist",
+			"app/index.html",
+			"app/main.app.js",
+			"app/main.controller.js",
+			"app/main.scss"
+		]);
+	
+	});
+
 });
