@@ -74,10 +74,6 @@ module.exports = yeoman.generators.Base.extend({
 				this.templatePath('Gulpfile.js'),
 				this.destinationPath('Gulpfile.js')
 			);
-      this.fs.copy(
-        this.templatePath('yarn.lock'),
-        this.destinationPath('yarn.lock')
-      );
 		},
 
 		//Copy application files
