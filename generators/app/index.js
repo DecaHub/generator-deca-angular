@@ -83,9 +83,16 @@ module.exports = yeoman.generators.Base.extend({
 		//Copy application files
 		app: function() {
 			//Server file
-			this.fs.copyTpl(
+			this.fs.copy(
 				this.templatePath('app'),
 				this.destinationPath('app')
+			);
+			
+			this.fs.copyTpl(
+				this.templatePath('app/index.html'),
+				this.destinationPath('app/index.html'), {
+					name: this.props.name
+				}
 			);
 		}
 	}
