@@ -49,6 +49,6 @@
         "no-unused-vars": 0,
         "no-plusplus": ["error", {"allowForLoopAfterthoughts": true}],
         "prefer-destructuring": 0,
-        "max-len": ["error", {"ignoreUrls": true, "ignoreTemplateLiterals": true, "ignoreStrings": true, "ignoreRegExpLiterals": true}]
+        "max-len": 0
     }
 }
