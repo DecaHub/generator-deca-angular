@@ -64,19 +64,19 @@ module.exports = yeoman.generators.Base.extend({
 			
 			// Configuration Files
 			this.fs.copy(
-				this.templatePath(".babelrc"),
+				this.templatePath("_babelrc"),
 				this.destinationPath(".babelrc")
 			);
 			this.fs.copy(
-				this.templatePath(".bowerrc"),
+				this.templatePath("_bowerrc"),
 				this.destinationPath(".bowerrc")
 			);
 			this.fs.copy(
-				this.templatePath(".eslintrc.json"),
+				this.templatePath("_eslintrc.json"),
 				this.destinationPath(".eslintrc.json")
 			);
 			this.fs.copy(
-				this.templatePath(".gitignore"),
+				this.templatePath("_gitignore"),
 				this.destinationPath(".gitignore")
 			);
 			this.fs.copy(
